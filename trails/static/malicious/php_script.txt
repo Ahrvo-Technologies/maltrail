@@ -1383,15 +1383,6 @@ tunacan-812.tk
 
 /eweerew.php
 
-# Reference: https://www.virustotal.com/gui/file/d920f89a4d8ae2f2cc597779c57e515c0f9451a66ecdaeef35169f6d0a43a35d/detection
-
-/us1jdskjdshfkjehr.php
-
-# Reference: https://www.virustotal.com/gui/domain/ultraspeed.info/relations
-
-/momomoomomom.php
-/usksdjqjwjoweidjcslkm.php
-
 # Reference: https://twitter.com/MalwarePatrol/status/1241592719576829952
 
 /9epq78sao4h2v1jpywaj2tai.php
@@ -1407,11 +1398,13 @@ tunacan-812.tk
 # Reference: https://twitter.com/DynamicAnalysis/status/1245437394473582593
 # Reference: https://twitter.com/DynamicAnalysis/status/1247570159939747846
 # Reference: https://twitter.com/DynamicAnalysis/status/1247916030183247872
+# Reference: https://twitter.com/malware_traffic/status/1332410802641514496
 
 /in2d2d.php
 /wp-cran.php
 /wp-crun.php
 /wp-cryn.php
+/wp-punch.php
 
 # Reference: https://www.virustotal.com/gui/domain/webcindario0.dvrdns.org/relations
 
@@ -2027,6 +2020,62 @@ tunacan-812.tk
 # Reference: https://twitter.com/ShadowChasing1/status/1329247256122322944
 
 /getCommand?guid=
+
+# Reference: https://blog.malwarebytes.com/threat-analysis/2020/11/malsmoke-operators-abandon-exploit-kits-in-favor-of-social-engineering-scheme/
+
+/caflexactive.php
+/post.php?file=download
+
+# Reference: https://twitter.com/malwrhunterteam/status/1331888599231565825
+
+/o365server.php
+
+# Reference: https://twitter.com/linecon0/status/1268862151214710787
+
+/112254.php
+
+# Reference: https://twitter.com/neutrify/status/1332235055469649920
+
+/blvcksn0vv.php
+/xxx.php?user=
+
+# Reference: https://www.virustotal.com/gui/file/b858e24eac464afd49d6bf782557f946b03e5e97431a1987b09b0203b5636c97/detection
+
+/Conumer1PirloS2S.php
+
+# Reference: https://twitter.com/malwrhunterteam/status/1309044455018725381
+# Reference: https://twitter.com/MaelSecurity/status/1333312479129202688
+
+/PayPal_Desktop.php
+
+# Reference: https://twitter.com/malwrhunterteam/status/1333499691674329093
+
+/avgaxrtjzt.php
+/vnrlvvxwej.php
+
+# Reference: https://www.virustotal.com/gui/domain/auroratd.cf/relations
+
+/orMkdppaG1PQ0WgF.php
+
+# Reference: https://www.virustotal.com/gui/file/a82a8fe9efbbaa4453be26645debe4a6e6077725171a982b90ed0a04bd6fb6ba/detection
+
+/logsgate.php
+
+# Reference: https://twitter.com/MalwarePatrol/status/1334228104995352578
+
+/8suu7672mgcg1ws7n4222vpj.php
+
+# Reference: https://twitter.com/neonprimetime/status/1335995482632581121
+
+/merrybe/post.php
+
+# Reference: https://twitter.com/ffforward/status/1335965749681250314
+
+/75dfbfe5ddf77b.php
+
+# Reference: https://twitter.com/MalwarePatrol/status/1336402429240373248
+
+/5er0zed1j5xkqcmwupaqm6oy.php
 
 # Generic
 

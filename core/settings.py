@@ -21,7 +21,7 @@ from core.trailsdict import TrailsDict
 from thirdparty.six.moves import urllib as _urllib
 
 NAME = "Maltrail"
-VERSION = "0.26.20"
+VERSION = "0.27.21"
 PLATFORM = os.name
 IS_WIN = PLATFORM == "nt"
 IS_SENSOR = sys.argv[0].startswith("sensor")
@@ -74,9 +74,9 @@ HIGH_PRIORITY_INFO_KEYWORDS = ("mass scanner", "ipinfo")
 HIGH_PRIORITY_REFERENCES = ("bambenekconsulting.com", "github.com/stamparm/blackbook", "(static)", "(custom)")
 CONSONANTS = "bcdfghjklmnpqrstvwxyz"
 BAD_TRAIL_PREFIXES = ("127.", "192.168.", "localhost")
-LOCALHOST_IP = { 4: "127.0.0.1", 6: "::1" }
+LOCALHOST_IP = {4: "127.0.0.1", 6: "::1"}
 POTENTIAL_INFECTION_PORTS = (135, 445, 1433, 3389)
-IGNORE_DNS_QUERY_SUFFIXES = set(("arpa", "local", "guest", "intranet", "int", "corp", "home", "lan", "intra", "intran", "workgroup", "localdomain"))
+IGNORE_DNS_QUERY_SUFFIXES = set(("arpa", "local", "guest", "intranet", "int", "corp", "home", "lan", "intra", "intran", "workgroup", "localdomain", "url"))
 VALID_DNS_NAME_REGEX = r"\A[a-zA-Z0-9.-]*\.[a-zA-Z0-9-]+\Z"  # Reference: http://stackoverflow.com/a/3523068
 SUSPICIOUS_CONTENT_TYPES = ("application/vnd.ms-htmlhelp", "application/x-bsh", "application/x-chm", "application/x-sh", "application/x-shellscript", "application/hta", "text/x-scriptlet", "text/x-sh", "text/x-shellscript")
 SUSPICIOUS_DIRECT_DOWNLOAD_EXTENSIONS = set((".apk", ".bin", ".class", ".chm", ".dll", ".egg", ".exe", ".hta", ".hwp", ".ps1", ".scr", ".sct", ".xpi"))
@@ -100,7 +100,7 @@ SUSPICIOUS_HTTP_PATH_REGEXES = (
     ("potential web scan", r"inexistent_file_name\.inexistent|test-for-some-inexistent-file|long_inexistent_path|some-inexistent-website\.acu")
 )
 SUSPICIOUS_HTTP_REQUEST_PRE_CONDITION = ("?", "..", ".ht", "=", " ", "'")
-SUSPICIOUS_DIRECT_IP_URL_REGEX = r"\A[\w./-]*/[\w.]*\b(aarch|arm(\b|v?\d)|exploit|m68k?\b|m[i1]ps|mpsl|pcc|powerpc|powerppc|ppc|root|x86|x32|x64|i\d{1,2}\b|i386|i486|i586|i686|sparc|sh\b|wtf|yarn|zte)\Z"
+SUSPICIOUS_DIRECT_IP_URL_REGEX = r"\A[\w./-]*/[\w.]*\b(aarch|arm(\b|v?\d)|arcle-(750d|hs38)|exploit|m68k?\b|m[i1]ps|mpsl|pcc|powerpc|powerppc|ppc|root|x86|x32|x64|i\d{1,2}\b|i386|i486|i586|i686|sparc|sh\b|wtf|yarn|zte)\Z"
 SUSPICIOUS_PROXY_PROBE_PRE_CONDITION = ("probe", "proxy", "echo", "check")
 SUSPICIOUS_HTTP_REQUEST_FORCE_ENCODE_CHARS = dict((_, _urllib.parse.quote(_)) for _ in "( )\r\n")
 SUSPICIOUS_UA_REGEX = ""
@@ -134,7 +134,7 @@ IGNORE_EVENTS = set()
 STATIC_IPCAT_LOOKUPS = {"shadowserver.org": ("184.105.139.66-184.105.139.126", "184.105.247.194-184.105.247.254", "74.82.47.1-74.82.47.63", "216.218.206.66-216.218.206.126"), "labs.rapid7.com": ("71.6.216.32-71.6.216.63",), "shodan.io": ("66.240.192.138", "66.240.236.119", "71.6.135.131", "71.6.165.200", "71.6.167.142", "82.221.105.6", "82.221.105.7", "85.25.43.94", "85.25.103.50", "93.120.27.62", "104.131.0.69", "104.236.198.48", "162.159.244.38", "188.138.9.50", "198.20.69.74", "198.20.69.98", "198.20.70.114", "198.20.87.98", "198.20.99.130", "208.180.20.97", "209.126.110.38"), "eecs.umich.edu": ("141.212.121.0-141.212.121.255", "141.212.122.0-141.212.122.255"), "netsec.colostate.edu": ("129.82.138.12", "129.82.138.31", "129.82.138.32", "129.82.138.33", "129.82.138.34", "129.82.138.44"), "ant.isi.edu": ("128.9.168.98", "203.178.148.18", "203.178.148.19"), "eecs.berkeley.edu": ("169.229.3.89", "169.229.3.90", "169.229.3.91", "169.229.3.92", "169.229.3.93", "169.229.3.94"), "openresolverproject.org": ("204.42.253.2", "204.42.254.5"), "opensnmpproject.org": ("204.42.253.130",), "openntpproject.org": ("204.42.253.131",), "openssdpproject.org": ("204.42.253.132",), "projectblindferret.com": ("107.150.52.82-107.150.52.86",), "kudelskisecurity.com": ("185.35.62.0-185.35.62.255",), "riskiq.com": ("64.125.239.0-64.125.239.255",), "comsys.rwth-aachen.de": ("137.226.113.0-137.226.113.63",), "sba-research.org": ("98.189.26.18",)}
 
 # Reference: https://gist.github.com/ryanwitt/588678
-DLT_OFFSETS = { 0: 4, 1: 14, 6: 22, 7: 6, 8: 16, 9: 4, 10: 21, 117: 48, 18: 4, 12 if sys.platform.find('openbsd') != -1 else 108: 4, 14 if sys.platform.find('openbsd') != -1 else 12: 0, 113: 16 }
+DLT_OFFSETS = {0: 4, 1: 14, 6: 22, 7: 6, 8: 16, 9: 4, 10: 21, 117: 48, 18: 4, 12 if sys.platform.find('openbsd') != -1 else 108: 4, 14 if sys.platform.find('openbsd') != -1 else 12: 0, 113: 16}
 
 try:
     import multiprocessing
@@ -154,6 +154,7 @@ def _get_total_physmem():
 
             kernel32 = ctypes.windll.kernel32
             c_ulong = ctypes.c_ulong
+
             class MEMORYSTATUS(ctypes.Structure):
                 _fields_ = [
                     ('dwLength', c_ulong),
@@ -295,7 +296,7 @@ def read_config(config_file):
         pass
 
     for option in ("MONITOR_INTERFACE", "CAPTURE_BUFFER", "LOG_DIR"):
-        if not option in config:
+        if option not in config:
             exit("[!] missing mandatory option '%s' in configuration file '%s'" % (option, config_file))
 
     for entry in (config.USERS or []):
@@ -314,13 +315,13 @@ def read_config(config_file):
             exit("[!] missing 'USER_WHITELIST' file '%s'" % config.USER_WHITELIST)
         else:
             read_whitelist()
-            
+
     if config.USER_IGNORELIST:
         if not os.path.isfile(config.USER_IGNORELIST):
             exit("[!] missing 'USER_IGNORELIST' file '%s'" % config.USER_IGNORELIST)
         else:
             read_ignorelist()
-            
+
     config.PROCESS_COUNT = int(config.PROCESS_COUNT or CPU_CORES)
 
     if config.USE_MULTIPROCESSING:
@@ -410,7 +411,7 @@ def read_whitelist():
                         WHITELIST.add(line)
                 else:
                     WHITELIST.add(line)
-                    
+
 # add rules to ignore event list from passed file
 def add_ignorelist(filepath):
     if filepath and os.path.isfile(filepath):
@@ -423,16 +424,16 @@ def add_ignorelist(filepath):
                 elif line.count(';') == 3:
                     src_ip, src_port, dst_ip, dst_port = line.split(';')
                     IGNORE_EVENTS.add((src_ip, src_port, dst_ip, dst_port))
-                                           
+
 def read_ignorelist():
     IGNORE_EVENTS.clear()
-    
+
     _ = os.path.abspath(os.path.join(ROOT_DIR, "misc", "ignore_events.txt"))
     add_ignorelist(_)
-                        
+
     if config.USER_IGNORELIST and os.path.isfile(config.USER_IGNORELIST):
         add_ignorelist(config.USER_IGNORELIST)
-    
+
 def read_ua():
     global SUSPICIOUS_UA_REGEX
 

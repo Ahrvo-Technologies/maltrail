@@ -166,21 +166,14 @@ def _check_domain(query, sec, usec, src_ip, src_port, dst_ip, dst_port, proto, p
     if query.replace('.', "").isdigit():  # IP address
         return
 
-    if _result_cache.get((CACHE_TYPE.DOMAIN, query)) == False:
+    if _result_cache.get((CACHE_TYPE.DOMAIN, query)) is False:
         return
 
     result = False
     if re.search(VALID_DNS_NAME_REGEX, query) is not None and not _check_domain_whitelisted(query):
         parts = query.split('.')
 
-        if ".onion." in query:
-            trail = re.sub(r"(\.onion)(\..*)", r"\1(\2)", query)
-            _ = trail.split('(')[0]
-            if _ in trails:
-                result = True
-                log_event((sec, usec, src_ip, src_port, dst_ip, dst_port, proto, TRAIL.DNS, trail, trails[_][0], trails[_][1]), packet)
-
-        elif query.endswith(".ip-adress.com"):  # Reference: https://www.virustotal.com/gui/domain/ip-adress.com/relations
+        if query.endswith(".ip-adress.com"):  # Reference: https://www.virustotal.com/gui/domain/ip-adress.com/relations
             _ = '.'.join(parts[:-2])
             trail = "%s(.ip-adress.com)" % _
             if _ in trails:
@@ -238,7 +231,14 @@ def _check_domain(query, sec, usec, src_ip, src_port, dst_ip, dst_port, proto, p
 
                     log_event((sec, usec, src_ip, src_port, dst_ip, dst_port, proto, TRAIL.DNS, trail, trails[candidate][0], trails[candidate][1]), packet)
 
-    if result == False:
+        if not result and ".onion." in query:
+            trail = re.sub(r"(\.onion)(\..*)", r"\1(\2)", query)
+            _ = trail.split('(')[0]
+            if _ in trails:
+                result = True
+                log_event((sec, usec, src_ip, src_port, dst_ip, dst_port, proto, TRAIL.DNS, trail, trails[_][0], trails[_][1]), packet)
+
+    if result is False:
         _result_cache[(CACHE_TYPE.DOMAIN, query)] = False
 
 def _get_local_prefix():
@@ -321,7 +321,7 @@ def _process_packet(packet, sec, usec, ip_offset):
             return
 
         if protocol == socket.IPPROTO_TCP:  # TCP
-            src_port, dst_port, _, _, doff_reserved, flags = struct.unpack("!HHLLBB", ip_data[iph_length:iph_length+14])
+            src_port, dst_port, _, _, doff_reserved, flags = struct.unpack("!HHLLBB", ip_data[iph_length:iph_length + 14])
 
             if flags != 2 and config.plugin_functions:
                 if dst_ip in trails:
@@ -385,7 +385,7 @@ def _process_packet(packet, sec, usec, ip_offset):
                         index = tcp_data.find("<title>")
                         if index >= 0:
                             title = tcp_data[index + len("<title>"):tcp_data.find("</title>", index)]
-                            if all(_ in title.lower() for _ in ("this domain", "has been seized")):
+                            if re.search(r"domain name has been seized by|Domain Seized|Domain Seizure", title):
                                 log_event((sec, usec, src_ip, src_port, dst_ip, dst_port, PROTO.TCP, TRAIL.HTTP, title, "seized domain (suspicious)", "(heuristic)"), packet)
 
                     content_type = None
@@ -513,6 +513,7 @@ def _process_packet(packet, sec, usec, ip_offset):
                         unquoted_post_data = _urllib.parse.unquote(post_data or "")
 
                         checks = [path.rstrip('/')]
+
                         if '?' in path:
                             checks.append(path.split('?')[0].rstrip('/'))
 
@@ -526,10 +527,6 @@ def _process_packet(packet, sec, usec, ip_offset):
                                     checks.append("/%s" % _.split('/')[-1])
                         elif post_data:
                             checks.append("%s?%s" % (path, unquoted_post_data.lower()))
-
-                        #_ = os.path.splitext(checks[-1])       # causing FPs in cases like elf_mirai - /juno if legit /juno.php is accessed
-                        #if _[1]:
-                            #checks.append(_[0])
 
                         if checks[-1].count('/') > 1:
                             checks.append(checks[-1][:checks[-1].rfind('/')])
@@ -856,7 +853,7 @@ def init():
                 if re.search(r"[\].][*+]|\[[a-z0-9_.\-]+\]", trail, re.I):
                     try:
                         re.compile(trail)
-                    except:
+                    except re.error:
                         pass
                     else:
                         if re.escape(trail) != trail:

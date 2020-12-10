@@ -240,12 +240,12 @@ bitdefender.com
 bleepingcomputer.com
 cnet.com
 comodo.com
+corel.com
 cwfservice.net
 dell.com
 devbuilds.kaspersky-labs.com
 digitalrivercontent.net
 divx.com
-download.drp.su
 download.eset.com
 download.esetnod32.ru
 download.geo.drweb.com
@@ -261,6 +261,7 @@ googleapis.com
 google.com
 googlesyndication.com
 gpsonextra.net
+grandstream.com
 gvt1.com
 here.com
 hitmanpro.com
@@ -269,7 +270,9 @@ htc.com
 intel.com
 izatcloud.net
 justbasic.com
+jutarnji.hr
 kmplayer.com
+layers.isu.pub
 lenovo.com
 lexmark.com
 logitech.com
@@ -308,6 +311,7 @@ toshiba.com
 tucows.com
 vba.com.by
 videolan.org
+wgt.com
 windowsupdate.com
 win-rar.com
 winzip.com
@@ -917,10 +921,28 @@ sophosxl.net
 
 # Generic
 
+binance.com
+gemius.pl
+coinbase.com
+exdynsrv.com
+vkcdnservice.com
+thepiratebay.org
+area.51.linkpc.net
+apcats.ddns.net
+partizan-cctv.com
+petarkigabit.dyndns.org
+111osz7giux5phu7uz4yc3fe247fxn8hys17mge8.ddns.net
+remote1.easydns.com
+remote2.easydns.com
+mzmwireless.ddns.net
+nf420d.ddns.net
+tinovator.duckdns.org
+thd8000.duckdns.org
 norefs.com
 app-measurement.com
 radio101.hr
 lexico.com
+ericsson.net
 ericsson.se
 radiocp.from-dc.com
 shadowshq.yi.org
@@ -1399,8 +1421,11 @@ forum-u-232.servebeer.com
 
 cfg.cml.ksmobile.com
 
+# Reference: https://docs.fortinet.com/vm/xen/fortigate/6.2/xen-cookbook/6.2.0/615472/configuring-port-1
+# Reference: https://www.virustotal.com/gui/ip-address/208.91.112.52/details (# DNS address of Fortinet)
 # Reference: https://www.virustotal.com/gui/ip-address/208.91.112.53/details (# DNS address of Fortinet)
 
+208.91.112.52
 208.91.112.53
 
 # AppleID resource
@@ -3119,3 +3144,7 @@ esentry.xyz
 # Reference: https://www.virustotal.com/gui/domain/utbs.ws/relations
 
 utbs.ws
+
+# Reference: https://securelist.com/what-did-deathstalker-hide-between-two-ferns/99616/
+
+1drv.ws

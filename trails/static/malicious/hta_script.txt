@@ -415,6 +415,14 @@
 
 /windows.hta
 
+# Reference: https://twitter.com/fr0s7_/status/1330828461196382215
+
+/evil.hta
+
+# Reference: https://twitter.com/jstrosch/status/1333935819380416512
+
+/invoice.hta
+
 # Generic
 
 /myrrem.hta
